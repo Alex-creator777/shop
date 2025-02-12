@@ -7,7 +7,6 @@ import ru.leontev.shop.model.CustomerEntity;
 import ru.leontev.shop.repository.CustomerRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -21,9 +20,7 @@ public class CustomerService {
 
     public List<CustomerResponseDto> getAllCustomers() {
         List<CustomerEntity> customers = customerRepository.findAll();
-        return customers.stream()
-                .map(customerResponseMapper::customerToCustomerDto)
-                .collect(Collectors.toList());
+        return customerResponseMapper.customersToCustomerDtos(customers);
     }
 
     public CustomerResponseDto getCustomerById(Long id) {

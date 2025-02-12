@@ -7,7 +7,6 @@ import ru.leontev.shop.model.StockItemEntity;
 import ru.leontev.shop.repository.StockItemRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class StockItemService {
@@ -21,9 +20,7 @@ public class StockItemService {
 
     public List<StockItemResponseDto> getAllStockItems() {
         List<StockItemEntity> stockItems = stockItemRepository.findAll();
-        return stockItems.stream()
-                .map(stockItemResponseMapper::stockItemToStockItemDto)
-                .collect(Collectors.toList());
+        return stockItemResponseMapper.stockItemsToStockItemDtos(stockItems);
     }
 
     public StockItemResponseDto getStockItemById(Long id) {

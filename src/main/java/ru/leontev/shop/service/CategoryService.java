@@ -21,10 +21,9 @@ public class CategoryService {
 
     public List<CategoryResponseDto> getAllCategories() {
         List<CategoryEntity> categories = categoryRepository.findAll();
-        return categories.stream()
-                .map(categoryResponseMapper::categoryToCategoryDto)
-                .collect(Collectors.toList());
+        return categoryResponseMapper.categoriesToCategoryDtos(categories);
     }
+
 
     public CategoryResponseDto getCategoryById(Long id) {
         CategoryEntity category = categoryRepository.findById(id)

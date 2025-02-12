@@ -7,7 +7,6 @@ import ru.leontev.shop.model.WarehouseEntity;
 import ru.leontev.shop.repository.WarehouseRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class WarehouseService {
@@ -21,9 +20,7 @@ public class WarehouseService {
 
     public List<WarehouseResponseDto> getAllWarehouses() {
         List<WarehouseEntity> warehouses = warehouseRepository.findAll();
-        return warehouses.stream()
-                .map(warehouseResponseMapper::warehouseToWarehouseDto)
-                .collect(Collectors.toList());
+        return warehouseResponseMapper.toWarehouseDtoList(warehouses);
     }
 
     public WarehouseResponseDto getWarehouseById(Long id) {

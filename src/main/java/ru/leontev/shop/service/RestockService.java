@@ -7,7 +7,6 @@ import ru.leontev.shop.model.RestockEntity;
 import ru.leontev.shop.repository.RestockRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RestockService {
@@ -21,9 +20,7 @@ public class RestockService {
 
     public List<RestockResponseDto> getAllRestocks() {
         List<RestockEntity> restocks = restockRepository.findAll();
-        return restocks.stream()
-                .map(restockResponseMapper::restockToRestockDto)
-                .collect(Collectors.toList());
+        return restockResponseMapper.restocksToRestockDtos(restocks);
     }
 
     public RestockResponseDto getRestockById(Long id) {

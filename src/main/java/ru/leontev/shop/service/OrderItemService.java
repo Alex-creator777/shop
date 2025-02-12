@@ -7,7 +7,6 @@ import ru.leontev.shop.model.OrderItemEntity;
 import ru.leontev.shop.repository.OrderItemRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderItemService {
@@ -21,9 +20,7 @@ public class OrderItemService {
 
     public List<OrderItemResponseDto> getAllOrderItems() {
         List<OrderItemEntity> orderItems = orderItemRepository.findAll();
-        return orderItems.stream()
-                .map(orderItemResponseMapper::orderItemToOrderItemDto)
-                .collect(Collectors.toList());
+        return orderItemResponseMapper.orderItemsToOrderItemDtos(orderItems);
     }
 
     public OrderItemResponseDto getOrderItemById(Long id) {
