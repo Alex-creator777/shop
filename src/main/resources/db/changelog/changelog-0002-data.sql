@@ -38,9 +38,9 @@ VALUES ('Иван', 'Петров', 'ivan.petrov@mail.com', 'Москва, ул.
 
 -- changeset your_name:15
 INSERT INTO orders (order_date, status, total_amount, customer_id)
-VALUES (now(), 'NEW', 500.00, 1),
-       (now(), 'PROCESSING', 800.00, 2),
-       (now(), 'DELIVERED', 2500.00, 3);
+VALUES (now(), 10, 500.00, 1),  -- 10 = NEW
+       (now(), 20, 800.00, 2),  -- 20 = PROCESSING
+       (now(), 30, 2500.00, 3); -- 30 = DELIVERED
 
 -- changeset your_name:16
 INSERT INTO order_items (order_id, product_id, quantity, unit_price)

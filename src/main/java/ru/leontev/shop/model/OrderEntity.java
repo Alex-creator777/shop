@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import ru.leontev.shop.model.OrderStatus;
+
 
 @Entity
 @Table(name = "orders")
@@ -17,26 +19,35 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //Дата заказа (orderDate) – когда был создан заказ.
-    @Column(name = "order_date")
+    // Дата заказа
+    @Column(name = "order_date", nullable = false)
     private LocalDateTime orderDate;
 
-    //в каком состоянии находится заказ (например, «NEW» – новый, «ОБРАБОТКА» – в обработке, «ДОСТАВЛЕНО» – доставлен).
+    // Хранение статуса в виде числа
     @Column(name = "status", nullable = false)
-    private String status; // Например, "NEW", "PROCESSING", "DELIVERED" и т.д.
+    private Integer status;
 
-    //сколько стоит весь заказ.
-    @Column(name = "total_amount")
+    // Общая сумма заказа
+    @Column(name = "total_amount", nullable = false)
     private BigDecimal totalAmount;
 
-    //Cсылка на покупателя, который оформил заказ. В БД будет внешний ключ customer_id, который связывает заказ с таблицей customers.
+    // Покупатель, оформивший заказ
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", nullable = false)
     private CustomerEntity customer;
 
-    //Список товаров – какие именно товары были куплены, их количество и цена (связь с OrderItemEntity). cascade = CascadeType.ALL– если удалить заказ, удалятся и все, что с этим связано OrderItemEntity
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    // Список товаров в заказе
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItemEntity> orderItemEntities;
+
+    // Геттер и сеттер для преобразования числового статуса в Enum
+    @Transient // Добавляем аннотацию, чтобы не сохранять этот метод в базе данных
+    public OrderStatus getOrderStatus() {
+        return OrderStatus.fromCode(this.status); // Преобразуем числовой статус в Enum
+    }
+
+    // Устанавливаем статус, передавая в качестве параметра Enum
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.status = orderStatus.getCode(); // Преобразуем статус Enum в число для сохранения в БД
+    }
 }
-
-
