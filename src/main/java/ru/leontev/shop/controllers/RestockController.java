@@ -1,5 +1,6 @@
 package ru.leontev.shop.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import ru.leontev.shop.dto.response.RestockResponseDto;
 import ru.leontev.shop.service.RestockService;
@@ -16,11 +17,13 @@ public class RestockController {
         this.restockService = restockService;    }
 
 
+    @Operation(summary = "Получает список всех пополнений товаров")
     @GetMapping
     public List<RestockResponseDto> getAllRestock() {
         return restockService.getAllRestocks();
     }
 
+    @Operation(summary = "Получает доставленный товар по id")
     @GetMapping("/{id}")
     public RestockResponseDto getRestockById(@PathVariable Long id) {
         return restockService.getRestockById(id);

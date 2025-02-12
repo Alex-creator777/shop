@@ -1,5 +1,6 @@
 package ru.leontev.shop.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import ru.leontev.shop.dto.response.CategoryResponseDto;
 import ru.leontev.shop.service.CategoryService;
@@ -17,13 +18,13 @@ public class CategoryController {
         this.categoryService = categoryServiceService;
     }
 
-    // Получение списка всех товаров
+    @Operation(summary = "получение списка все товаров")
     @GetMapping
     public List<CategoryResponseDto> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
-    // Получение одного товара по ID
+    @Operation(summary = "получение списка товара по id")
     @GetMapping("/{id}")
     public CategoryResponseDto getCategoryById(@PathVariable Long id) {
         return categoryService.getCategoryById(id);
