@@ -1,6 +1,7 @@
 package ru.leontev.shop.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import ru.leontev.shop.dto.response.OrderResponseDto;
 import ru.leontev.shop.service.OrderService;
@@ -18,11 +19,14 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @Operation(summary = "получение списка всех заказов")
+    @Operation(summary = "Получение списка всех заказов с пагинацией")
     @GetMapping
-    public List<OrderResponseDto> getAllOrders() {
-        return orderService.getAllOrders();
+    public Page<OrderResponseDto> getAllOrders(
+            @RequestParam(required = false, defaultValue = "0") Integer page,
+            @RequestParam(required = false, defaultValue = "10") Integer size) {
+        return orderService.getAllOrders(page, size);
     }
+
 
     @Operation(summary = "получение заказа по id")
     @GetMapping("/{id}")

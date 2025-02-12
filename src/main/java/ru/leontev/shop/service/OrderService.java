@@ -1,5 +1,9 @@
 package ru.leontev.shop.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.leontev.shop.dto.response.OrderResponseDto;
 import ru.leontev.shop.mapper.response.OrderResponseMapper;
@@ -19,12 +23,17 @@ public class OrderService {
         this.orderResponseMapper = orderResponseMapper;
     }
 
-    public List<OrderResponseDto> getAllOrders() {
-        List<OrderEntity> orders = orderRepository.findAll();
-        return orders.stream()
-                .map(orderResponseMapper::orderToOrderDto)
-                .collect(Collectors.toList());
+    //метод для получения всех заказов с пагинацией
+    public Page<OrderResponseDto> getAllOrders(Integer page, Integer size) {
+        int defaultPage = (page != null) ? page : 0;
+        int defaultSize = (size != null) ? size : 10;
+
+        Pageable pageable = PageRequest.of(defaultPage, defaultSize, Sort.by("orderDate").descending());
+        Page<OrderEntity> ordersPage = orderRepository.findAll(pageable);
+
+        return ordersPage.map(orderResponseMapper::orderToOrderDto);
     }
+
 
     public OrderResponseDto getOrderById(Long id) {
         OrderEntity order = orderRepository.findById(id)

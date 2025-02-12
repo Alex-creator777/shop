@@ -1,5 +1,9 @@
 package ru.leontev.shop.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.leontev.shop.dto.response.ProductResponseDto;
 import ru.leontev.shop.mapper.response.ProductResponseMapper;
@@ -21,16 +25,17 @@ public class ProductService {
         this.productResponseMapper = productResponseMapper;
     }
 
-    // Метод для получения всех продуктов и преобразования их в DTO
-    public List<ProductResponseDto> getAllProducts() {
-        // Получаем все сущности продуктов из базы данных (entity) через репозиторий
-        List<ProductEntity> products = productRepository.findAll();
+    // Метод для получения всех продуктов и преобразования их в DTO с пагинацией
+    public Page<ProductResponseDto> getAllProducts(Integer page, Integer size) {
+        int defaultPage = (page != null) ? page : 0;
+        int defaultSize = (size != null) ? size : 10;
 
-        // Преобразуем каждую сущность в соответствующее DTO
-        return products.stream()
-                .map(productResponseMapper::productToProductDto)  // Маппинг сущности в DTO. Или в лябда productEntity -> productResponseMapper.productToProductDto(productEntity)
-                .collect(Collectors.toList());  // Собираем все преобразованные DTO в список
+        Pageable pageable = PageRequest.of(defaultPage, defaultSize, Sort.by("name").ascending());
+        Page<ProductEntity> productsPage = productRepository.findAll(pageable);
+
+        return productsPage.map(productResponseMapper::productToProductDto);
     }
+
 
     // Метод для получения одного продукта по его ID
     public ProductResponseDto getProductById(Long id) {
