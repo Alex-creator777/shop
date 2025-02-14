@@ -1,13 +1,10 @@
-package ru.leontev.shop.controllers;
+package ru.leontev.shop.api.controllersResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import ru.leontev.shop.dto.response.OrderResponseDto;
-import ru.leontev.shop.service.OrderService;
-
-
-import java.util.List;
+import ru.leontev.shop.service.serviceResponse.OrderService;
 
 @RestController
 @RequestMapping("/order") // Базовый URL для всех методов контроллера

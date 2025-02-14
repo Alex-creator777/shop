@@ -1,4 +1,4 @@
-package ru.leontev.shop.service;
+package ru.leontev.shop.service.serviceResponse;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,9 +9,6 @@ import ru.leontev.shop.dto.response.ProductResponseDto;
 import ru.leontev.shop.mapper.response.ProductResponseMapper;
 import ru.leontev.shop.model.ProductEntity;
 import ru.leontev.shop.repository.ProductRepository;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {

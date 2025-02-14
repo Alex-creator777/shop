@@ -1,9 +1,9 @@
-package ru.leontev.shop.controllers;
+package ru.leontev.shop.api.controllersResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import ru.leontev.shop.dto.response.WarehouseResponseDto;
-import ru.leontev.shop.service.WarehouseService;
+import ru.leontev.shop.service.serviceResponse.WarehouseService;
 
 import java.util.List;
 

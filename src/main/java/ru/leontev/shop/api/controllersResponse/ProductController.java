@@ -1,12 +1,10 @@
-package ru.leontev.shop.controllers;
+package ru.leontev.shop.api.controllersResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import ru.leontev.shop.dto.response.ProductResponseDto;
-import ru.leontev.shop.service.ProductService;
-
-import java.util.List;
+import ru.leontev.shop.service.serviceResponse.ProductService;
 
 @RestController
 @RequestMapping("/products") // Базовый URL для всех методов контроллера

@@ -1,4 +1,4 @@
-package ru.leontev.shop.service;
+package ru.leontev.shop.service.serviceResponse;
 
 import org.springframework.stereotype.Service;
 import ru.leontev.shop.dto.response.CustomerResponseDto;

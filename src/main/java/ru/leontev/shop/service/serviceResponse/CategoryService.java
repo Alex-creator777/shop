@@ -1,4 +1,4 @@
-package ru.leontev.shop.service;
+package ru.leontev.shop.service.serviceResponse;
 
 import org.springframework.stereotype.Service;
 import ru.leontev.shop.dto.response.CategoryResponseDto;
@@ -7,7 +7,6 @@ import ru.leontev.shop.model.CategoryEntity;
 import ru.leontev.shop.repository.CategoryRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
