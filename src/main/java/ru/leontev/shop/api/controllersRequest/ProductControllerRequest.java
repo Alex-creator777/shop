@@ -7,7 +7,7 @@ import ru.leontev.shop.dto.request.ProductRequestDto;
 import ru.leontev.shop.dto.response.ProductResponseDto;
 import ru.leontev.shop.service.serviceRequest.ProductServiceRequest;
 import ru.leontev.shop.service.serviceResponse.ProductService;
-
+// добавление продукта в каталог
 @RestController
 @RequestMapping("/products")
 public class ProductControllerRequest {
