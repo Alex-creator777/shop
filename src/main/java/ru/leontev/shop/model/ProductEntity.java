@@ -46,6 +46,10 @@ public class ProductEntity {
     @Column(name = "connector_type")
     private String connectorType;
 
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted = false;
+
+
     //Связь с CategoryEntity (категория товара):
     //@ManyToOne – устанавливает связь много товаров → к одной категории.
     //@JoinColumn(name = "category_id") – в таблице products будет столбец category_id, который является внешним ключом (FK), указывающим на таблицу categories

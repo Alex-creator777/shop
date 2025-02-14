@@ -28,7 +28,7 @@ public class ProductService {
         int defaultSize = (size != null) ? size : 10;
 
         Pageable pageable = PageRequest.of(defaultPage, defaultSize, Sort.by("name").ascending());
-        Page<ProductEntity> productsPage = productRepository.findAll(pageable);
+        Page<ProductEntity> productsPage = productRepository.findByIsDeletedFalse(pageable); // вернет только не удаленные(не спрятанные) позиции
 
         return productsPage.map(productResponseMapper::productToProductDto);
     }
