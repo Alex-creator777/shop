@@ -1,4 +1,4 @@
-package ru.leontev.shop.service;
+package ru.leontev.shop.service.serviceRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
