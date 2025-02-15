@@ -7,6 +7,5 @@
 
     <include file="db/changelog/changelog-0001-init.sql"/>
     <include file="db/changelog/changelog-0003-add-is-deleted.sql"/>
-    <include file="db/changelog/changelog-0002-data.sql"/>
 
 </databaseChangeLog>
