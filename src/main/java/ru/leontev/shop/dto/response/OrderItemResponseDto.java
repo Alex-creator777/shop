@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 public class OrderItemResponseDto {
 
     private Long id;
+    private Long orderId;
     private Long productId; // Идентификатор товара
     private Integer quantity;
     private BigDecimal unitPrice;
