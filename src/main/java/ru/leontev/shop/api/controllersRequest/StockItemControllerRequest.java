@@ -5,12 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.leontev.shop.dto.request.StockItemRequestDto;
+import ru.leontev.shop.dto.request.StockItemQuantityChangeRequestDto;
 import ru.leontev.shop.dto.response.StockItemResponseDto;
 import ru.leontev.shop.service.serviceRequest.StockItemServiceRequest;
 
 import jakarta.validation.Valid;
 
-//добавление продукта на склад
 @RestController
 @RequestMapping("/stock-items")
 public class StockItemControllerRequest {
@@ -26,5 +26,12 @@ public class StockItemControllerRequest {
     public ResponseEntity<StockItemResponseDto> addStockItem(@Valid @RequestBody StockItemRequestDto dto) {
         StockItemResponseDto responseDto = stockItemService.addStockItem(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
+    }
+
+    @Operation(summary = "Изменяет количество товара на складе (увеличивает или уменьшает)")
+    @PatchMapping("/quantity")
+    public ResponseEntity<StockItemResponseDto> changeQuantity(@Valid @RequestBody StockItemQuantityChangeRequestDto dto) {
+        StockItemResponseDto responseDto = stockItemService.changeStockItemQuantity(dto);
+        return ResponseEntity.ok(responseDto);
     }
 }
