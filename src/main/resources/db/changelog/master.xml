@@ -7,5 +7,7 @@
 
     <include file="db/changelog/changelog-0001-init.sql"/>
     <include file="db/changelog/changelog-0003-add-is-deleted.sql"/>
+    <include file="db/changelog/changelog-0005-carts-and-cart-items.sql"/>
+
 
 </databaseChangeLog>
