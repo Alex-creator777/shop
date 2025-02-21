@@ -10,5 +10,7 @@
     <include file="db/changelog/changelog-0005-carts-and-cart-items.sql"/>
     <include file="db/changelog/changelog-0006-favorites.sql"/>
     <include file="db/changelog/changelog-0007-payments-and-transactions.sql"/>
+    <include file="db/changelog/changelog-0008-discounts-and-order-discounts.sql"/>
+
 
 </databaseChangeLog>
