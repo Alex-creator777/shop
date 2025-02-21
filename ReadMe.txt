@@ -90,9 +90,6 @@ master.xml: главный файл, в котором подключаются 
 Пагинация
 В проектах для получения списка товаров, заказов и других больших выборок применена пагинация:
 
-http
-Копировать
-Редактировать
 GET /api/products?page=0&size=10
 page — номер страницы (начинается с 0).
 size — количество элементов на странице.
@@ -107,23 +104,18 @@ Maven (для сборки и управления зависимостями)
 Создайте базу данных shop в PostgreSQL.
 В файле application.properties пропишите параметры подключения:
 properties
-Копировать
-Редактировать
+
 spring.datasource.url=jdbc:postgresql://localhost:5432/shop
 spring.datasource.username=postgres
 spring.datasource.password=YOUR_PASSWORD
 Сборка и запуск:
 
-bash
-Копировать
-Редактировать
+
 mvn clean install
 mvn spring-boot:run
 Доступ к Swagger UI (после запуска приложения):
 
-bash
-Копировать
-Редактировать
+
 http://localhost:8080/swagger-ui/index.html
 Структура проекта
 Контроллеры (api/controllersRequest и api/controllersResponse)
