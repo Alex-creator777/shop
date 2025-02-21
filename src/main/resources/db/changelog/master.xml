@@ -9,4 +9,6 @@
     <include file="db/changelog/changelog-0003-add-is-deleted.sql"/>
     <include file="db/changelog/changelog-0005-carts-and-cart-items.sql"/>
     <include file="db/changelog/changelog-0006-favorites.sql"/>
+    <include file="db/changelog/changelog-0007-payments-and-transactions.sql"/>
+
 </databaseChangeLog>
