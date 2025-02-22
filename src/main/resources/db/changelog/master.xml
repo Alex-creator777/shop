@@ -12,6 +12,8 @@
     <include file="db/changelog/changelog-0007-payments-and-transactions.sql"/>
     <include file="db/changelog/changelog-0008-discounts-and-order-discounts.sql"/>
     <include file="db/changelog/changelog-0009-reviews.sql"/>
+    <include file="db/changelog/changelog-0010-users.sql"/>
+
 
 
 </databaseChangeLog>
