@@ -115,6 +115,9 @@
     </dependencies>
 
     <build>
+        <!-- Итоговое имя артефакта, которое будет получено в папке target -->
+        <finalName>shop</finalName>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -161,4 +164,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
